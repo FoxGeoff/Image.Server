@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace Image.Server.Entities
 {
-    public class Product
+    public class Product //: AuditableEntity
     {
         [Key]
-        public uint Id { get; set; }
+        public int Id { get; set; }
         [Column("IsDiscontinued")]
         public byte Discontinued { get; set; }
         [Column("AssociatedCategoryId")]
-        public uint? Category { get; set; }
+        public int? Category { get; set; }
         [Column("AssociatedSnapshotTypeId")]
-        public uint? Snapshot { get; set; }
+        public int? Snapshot { get; set; }
         [Column("AssociatedGroupId")]
-        public uint? Group { get; set; }
+        public int? Group { get; set; }
         [Column("AssociatedScreenId")]
-        public uint? Screen { get; set; }
-        //Key
+        public int? Screen { get; set; }
+        [ForeignKey("ProductImage")]
         [Column("AssociatedImageId")]
-        public uint? Image { get; set; }
+        public int? Image { get; set; }
         [Column("AssociatedRecycleId")]
-        public uint? RecycleNumber { get; set; }
+        public int? RecycleNumber { get; set; }
         public string MerchantNumber { get; set; }
         public string ProductDescription { get; set; }
         public string AiPartNumber { get; set; }
@@ -34,11 +34,11 @@ namespace Image.Server.Entities
         public string MfgUrl { get; set; }
         public string MfgManualUrl { get; set; }
         [Column("AssociatedPrimaryVendorId")]
-        public uint? PrimaryVendor { get; set; }
+        public int? PrimaryVendor { get; set; }
         [Column("AssociatedSecondaryVendorId")]
-        public uint? SecondaryVendor { get; set; }
+        public int? SecondaryVendor { get; set; }
         [Column("AssociatedTertiaryVendorId")]
-        public uint? TertiaryVendor { get; set; }
+        public int? TertiaryVendor { get; set; }
         public double? Retail { get; set; }
         public double? Cost { get; set; }
         public byte AdditionalCost { get; set; }
@@ -54,7 +54,6 @@ namespace Image.Server.Entities
         public int CostVerification { get; set; }
 
         //navigation properties
-        public ICollection<ProductImage> ProductImages { get; set; }
-            = new List<ProductImage>();
+        public ProductImage ProductImage { get; set; }
     }
 }

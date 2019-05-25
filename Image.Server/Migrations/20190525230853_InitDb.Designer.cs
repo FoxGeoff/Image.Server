@@ -3,14 +3,16 @@ using System;
 using Image.Server.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Image.Server.Migrations
 {
     [DbContext(typeof(ProductImageDbContext))]
-    partial class ProductImageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190525230853_InitDb")]
+    partial class InitDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

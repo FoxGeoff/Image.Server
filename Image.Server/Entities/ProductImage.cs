@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Image.Server.Entities
 {
-    public class ProductImage
+    public class ProductImage //: AuditableEntity
     {
         [Key]
         public int Id { get; set; }
@@ -22,8 +22,8 @@ namespace Image.Server.Entities
         [Display(Name = "Full Image")]
         public byte[] ImageFull { get; set; }
         //navigation properties
-        public Product Product { get; set; }
-        public int ProductId { get; set; }
+        public ICollection<Product> Products { get; set; }
+            = new List<Product>();
 
         public string GetImageThumb()
         {
