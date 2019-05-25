@@ -10,21 +10,20 @@ namespace Image.Server.Entities
     {
         [Key]
         public int Id { get; set; }
-
         [Display(Name = "Date Updated")]
         public DateTime? DateUpdated { get; set; }
-
         [MaxLength(50)]
         [Display(Name = "File Name")]
         public string FileName { get; set; }
-
         [MaxLength(50000)]
         [Display(Name = "Thumb")]
         public byte[] ImageThumb { get; set; }
-
         [MaxLength(150000)]
         [Display(Name = "Full Image")]
         public byte[] ImageFull { get; set; }
+        //navigation properties
+        public Product Product { get; set; }
+        public int ProductId { get; set; }
 
         public string GetImageThumb()
         {

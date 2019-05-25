@@ -19,7 +19,7 @@
 ```
 public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProductImageDbContext>(options =>
+            services.AddDbContext<ProductImageDbContext>(options => 
                 options.UseMySql(_dbconnect));
 
 			services.AddTransient<ProductImageSeeder>();

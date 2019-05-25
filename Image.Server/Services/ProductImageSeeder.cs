@@ -32,6 +32,15 @@ namespace Image.Server.Services
                 _context.ProductImages.AddRange(productImages);
                 _context.SaveChanges();
             }
+
+            if (!_context.Products.Any())
+            {
+                var filepath = Path.Combine(_hosting.ContentRootPath, "Data/product_mod.json");
+                var json = File.ReadAllText(filepath);
+                var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
+                _context.Products.AddRange(products);
+                _context.SaveChanges();
+            }
         }
 
 
