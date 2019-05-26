@@ -46,3 +46,33 @@ public void ConfigureServices(IServiceCollection services)
 * Run```Add-Migration InitDb```
 * Run```Update-Database```
 
+## Check: Add ProductController
+
+* Code out ImageRepository.GetProductsAsync()
+* Code out Dispose 
+```
+public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_context != null)
+                {
+                    _context.Dispose();
+                    _context = null;
+                }
+            }
+        }
+```
+* Add Json Formating (StartUp.cs) to handle recussion
+```
+services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+    .AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
+```
+
