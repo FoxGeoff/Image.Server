@@ -34,6 +34,8 @@ namespace Image.Server
 
             services.AddScoped<IImageRepository, ImageRepository>();
 
+            services.AddHttpClient();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                     .AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }

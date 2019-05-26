@@ -11,14 +11,17 @@ namespace Image.Server.Services
     public class ImageRepository : IImageRepository, IDisposable
     {
         private ProductImageDbContext _context;
+        private IHttpClientFactory _httpClientFactory;
 
-        public ImageRepository(ProductImageDbContext context)
+        public ImageRepository(ProductImageDbContext context, IHttpClientFactory httpClientFactory)
         {
             _context = context ??
                 throw new ArgumentNullException(nameof(context));
+            _httpClientFactory = httpClientFactory ??
+                throw new ArgumentNullException(nameof(httpClientFactory));
         }
 
-        public void AddBook(Product ProductToAdd)
+        public void AddProduct(Product ProductToAdd)
         {
             throw new NotImplementedException();
         }

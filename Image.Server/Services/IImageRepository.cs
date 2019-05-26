@@ -13,7 +13,7 @@ namespace Image.Server.Services
 
         Task<Entities.Product> GetProductAsync(int id);
 
-        void AddBook(Entities.Product ProductToAdd);
+        void AddProduct(Entities.Product ProductToAdd);
 
         Task<bool> SaveChangesAsync();
 
