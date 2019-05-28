@@ -41,9 +41,11 @@ namespace Image.Server.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<ProductImage>> GetProductImagesAsync(IEnumerable<int> bookIds)
+        public async Task<IEnumerable<ProductImage>> GetProductImagesAsync()
         {
-            throw new NotImplementedException();
+            return await _context.ProductImages
+                .Include(pi => pi.Products)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync()

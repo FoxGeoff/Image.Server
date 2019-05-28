@@ -17,7 +17,7 @@ namespace Image.Server.Services
 
         Task<bool> SaveChangesAsync();
 
-        Task<IEnumerable<Entities.ProductImage>> GetProductImagesAsync(IEnumerable<int> bookIds);
+        Task<IEnumerable<Entities.ProductImage>> GetProductImagesAsync();
 
         Task<Entities.ProductImage> GetProductImageAsync(int id);
 
