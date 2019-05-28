@@ -1,4 +1,6 @@
-﻿using Image.Server.Context;
+﻿using AutoMapper;
+using Image.Server.Context;
+using Image.Server.Profiles;
 using Image.Server.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +34,25 @@ namespace Image.Server
 
             services.AddTransient<ProductImageSeeder>();
 
+            // services.AddTransient will return a new instance each time - This will not keep state TOO SHORT!
+            // services.AddSingleton is not equal to OR shorter than the DbContext scope TOO LONG!
             services.AddScoped<IImageRepository, ImageRepository>();
+
+            //services.AddAutoMapper(); needs update as shown below:-
+            // AutoMapper Configurations #1
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<ImageProfile>();
+            });
+
+            // AutoMapper Configurations #2
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new ImageProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddHttpClient();
 

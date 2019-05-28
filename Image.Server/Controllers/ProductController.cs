@@ -1,4 +1,5 @@
-﻿using Image.Server.Services;
+﻿using Image.Server.Filters;
+using Image.Server.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ namespace Image.Server.Controllers
 {
     [Route("api/products")]
     [ApiController]
+    [ProductsResultFilter]
     public class ProductController : ControllerBase
     {
         private readonly IImageRepository _imageRepository;
