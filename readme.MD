@@ -75,4 +75,8 @@ services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
     .AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
 ```
+## Check: Add AutoMapper
+* Add Nuget Package ```AutoMapper.Extensions.Microsoft.DependencyInjection```
+* Add Filters.ProductResultFilterAttribute
+* Add Profile.ProductProfile
 
