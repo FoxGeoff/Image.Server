@@ -23,7 +23,6 @@ namespace Image.Server.Entities
         public byte[] ImageFull { get; set; }
         //navigation properties
         public ICollection<Product> Products { get; set; }
-            = new List<Product>();
 
         public string GetImageThumb()
         {

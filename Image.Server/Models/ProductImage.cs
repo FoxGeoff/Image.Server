@@ -14,6 +14,5 @@ namespace Image.Server.Models
         public byte[] ImageFull { get; set; }
         //navigation properties
         public ICollection<Product> Products { get; set; }
-            = new List<Product>();
     }
 }
