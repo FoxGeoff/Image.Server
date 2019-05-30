@@ -11,7 +11,6 @@ namespace Image.Server.Controllers
 {
     [Route("api/productimages")]
     [ApiController]
-    [ProductImagesResultFilter]
     public class ProductImageController : ControllerBase
     {
         private readonly IImageRepository _imageRepository;
@@ -23,12 +22,28 @@ namespace Image.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetProductImagesAsync()
+        [ProductImagesResultFilter]
+        public async Task<ActionResult> GetProductImages()
         {
 
             var productImageEntities = await _imageRepository.GetProductImagesAsync();
-
+           
             return Ok(productImageEntities);
         }
+
+        [HttpGet]
+        [Route("{id}", Name = "GetProductImage")]
+        public async Task<ActionResult> GetProductImage(int Id)
+        {
+
+            var productImageEntity = await _imageRepository.GetProductImageAsync(Id);
+            if (productImageEntity == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(productImageEntity);
+        }
+
     }
 }

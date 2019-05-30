@@ -3,6 +3,7 @@ using Image.Server.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -36,9 +37,12 @@ namespace Image.Server.Services
             throw new NotImplementedException();
         }
 
-        public Task<ProductImage> GetProductImageAsync(int id)
+        public async Task<ProductImage> GetProductImageAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.ProductImages
+                .Where(pi => pi.Id == id)
+                .Include(pi => pi.Products)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<ProductImage>> GetProductImagesAsync()
