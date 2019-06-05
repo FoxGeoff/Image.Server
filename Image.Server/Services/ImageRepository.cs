@@ -27,10 +27,16 @@ namespace Image.Server.Services
             throw new NotImplementedException();
         }
 
+        //Per api instructions don't use .AddAsync()
         public void AddProductImage(ProductImage ProductImageToAdd)
         {
-            throw new NotImplementedException();
+
+            if (ProductImageToAdd == null)
+                throw new ArgumentNullException(nameof(ProductImageToAdd));
+
+            _context.Add(ProductImageToAdd);
         }
+
 
         public Task<Product> GetProductAsync(int id)
         {
@@ -59,9 +65,10 @@ namespace Image.Server.Services
                 .ToListAsync();
         }
 
-        public Task<bool> SaveChangesAsync()
+        public async Task<bool> SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            //return true if 1 or more entities are changed
+            return (await _context.SaveChangesAsync() > 0);
         }
 
         public void Dispose()
