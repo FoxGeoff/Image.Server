@@ -52,6 +52,7 @@ namespace Image.Server.Controllers
         public async Task<IActionResult> CreateProductImage([FromBody] ProductImageForCreation productImage)
         {
             var productImageEntity = _mapper.Map<Entities.ProductImage>(productImage);
+            productImageEntity.DateUpdated = DateTime.Now;
             _imageRepository.AddProductImage(productImageEntity);
 
             await _imageRepository.SaveChangesAsync();
