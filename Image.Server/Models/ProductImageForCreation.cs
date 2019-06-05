@@ -13,6 +13,6 @@ namespace Image.Server.Models
 
         public byte[] ImageFull { get; set; }
 
-        public int ProductId { get; set; }
+        //public int[] ProductIds { get; set; }
     }
 }
