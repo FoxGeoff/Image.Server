@@ -74,6 +74,13 @@ namespace Image.Server
                     var seeder = scope.ServiceProvider.GetRequiredService<ProductImageSeeder>();
                     seeder.Seed();
                 }
+
+                app.UseCors(builder =>
+                builder
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                );
             }
             else
             {

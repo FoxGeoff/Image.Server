@@ -57,7 +57,7 @@ namespace Image.Server.Controllers
 
             await _imageRepository.SaveChangesAsync();
 
-            //Fetch (refetch) the book from the data store to include author
+            //Fetch (refetch) the ProductImage from the data store to include Product
             await _imageRepository.GetProductImageAsync(productImageEntity.Id);
 
             return CreatedAtRoute("GetProductImage",
