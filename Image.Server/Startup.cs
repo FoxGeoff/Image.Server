@@ -32,6 +32,8 @@ namespace Image.Server
             services.AddDbContext<ProductImageDbContext>(options =>
                 options.UseMySql(_dbconnect));
 
+            services.AddCors();
+
             services.AddTransient<ProductImageSeeder>();
 
             // services.AddTransient will return a new instance each time - This will not keep state TOO SHORT!
