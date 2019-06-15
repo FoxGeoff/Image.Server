@@ -12,7 +12,7 @@ namespace Image.Server.Services
     public class ImageRepository : IImageRepository, IDisposable
     {
         private ProductImageDbContext _context;
-        private IHttpClientFactory _httpClientFactory;
+        private readonly IHttpClientFactory _httpClientFactory;
 
         public ImageRepository(ProductImageDbContext context, IHttpClientFactory httpClientFactory)
         {

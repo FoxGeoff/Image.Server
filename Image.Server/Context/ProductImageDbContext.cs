@@ -12,5 +12,7 @@ namespace Image.Server.Context
         public DbSet<ProductImage> ProductImages { get; set; }
 
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Hero> Heroes { get; set; }
     }
 }
