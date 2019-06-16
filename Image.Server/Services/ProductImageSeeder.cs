@@ -23,6 +23,19 @@ namespace Image.Server.Services
 
         public void Seed()
         {
+            if (!_context.Heroes.Any())
+            {
+                Hero[] heroes =
+                {
+                    new Hero { Id=1, Name="Windstorm"},
+                    new Hero { Id=2, Name="Bombasto"},
+                    new Hero { Id=3, Name="Magneta"},
+                    new Hero { Id=4, Name="Tornado"}
+                };
+                _context.Heroes.AddRange(heroes);
+                _context.SaveChanges();
+            }
+
             if (!_context.ProductImages.Any())
             {
                 var filepath = Path.Combine(_hosting.ContentRootPath, "Data/product_images_mod.json");
