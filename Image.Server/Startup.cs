@@ -39,6 +39,7 @@ namespace Image.Server
             // services.AddTransient will return a new instance each time - This will not keep state TOO SHORT!
             // services.AddSingleton is not equal to OR shorter than the DbContext scope TOO LONG!
             services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<IHeroesRepository, HeroesRepository>();
 
             //services.AddAutoMapper(); needs update as shown below:-
             // AutoMapper Configurations #1

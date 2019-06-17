@@ -16,5 +16,7 @@ namespace Image.Server.Services
         void AddHero(Entities.Hero HeroToAdd);
 
         Task<bool> SaveChangesAsync();
+
+        //Task<bool> UpdateHero(Entities.Hero dbHero, Entities.Hero hero);
     }
 }

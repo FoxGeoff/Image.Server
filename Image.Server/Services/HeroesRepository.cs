@@ -1,5 +1,6 @@
 ﻿using Image.Server.Context;
 using Image.Server.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,18 @@ namespace Image.Server.Services
         {
             return await _context.Heroes
                 .ToListAsync();
+        }
+
+        /*
+        public async Task<bool> UpdateHero(Hero dbHero, Hero hero)
+        {
+            
+        }
+        */
+
+        private bool HeroExists(int id)
+        {
+            return _context.Heroes.Any(e => e.Id == id);
         }
 
         public async Task<bool> SaveChangesAsync()
